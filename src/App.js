@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { Fragment } from "react";
+import "./App.css";
+
+// import FunctionComponent from "./components/DemoComponent/FunctionComponent";
+// import ClassComponent from "./components/demoComponent/ClassComponent";
+import Layout1 from "./components/BTLayout1/Layout1";
+import DataBinding from "./components/DataBinding/DataBinding";
+import RenderWithCondition from "./components/RenderWithCondition/RenderWithCondition";
+import HandleEvent from "./components/HandleEvent/HandleEvent";
+import BTLayout2 from "./components/BTLayout2/BTLayout2";
+import State from "./components/State/State";
+import BaiTapChonXe from "./components/BaiTapChonXe/BaiTapChonXe";
+import Styling from "./components/Styling/Styling";
+import BaiTapStyling from "./components/BaiTapStyling/BaiTapStyling";
+import RenderWithArray from "./components/RenderWithArray/RenderWithArray";
+import BaiTapPhim from "./components/BaiTapPhim/BaiTapPhim";
+import Parent from "./components/Props/Parent";
+import BaiTapGiay from "./components/BaiTapGiay/BaiTapGiay";
+import BaiTapDT from "./components/BaiTapDT/BaiTapDT";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <ClassComponent></ClassComponent>
+      <ClassComponent />
+      <FunctionComponent /> */}
+
+      {/* <hr />
+      <Layout1></Layout1>
+
+      <hr />
+      <DataBinding />
+
+      <hr />
+      <RenderWithCondition />
+
+      <hr />
+      <HandleEvent />
+
+      <hr />
+      <BTLayout2 /> */}
+
+      {/* <State /> */}
+      {/* <BaiTapChonXe /> 
+      <Styling/>*/}
+      {/* <BaiTapStyling /> */}
+      {/* <RenderWithArray /> */}
+      {/* <BaiTapPhim /> */}
+      {/* <Parent /> */}
+      {/* <BaiTapGiay /> */}
+      <BaiTapDT />
+    </>
   );
 }
+
+/**App được xem là 1 component gốc (component cha) chứ không phải 1 hàm (function)
+ * 1 component chỉ được có 1 object cha
+ * dùng Fragment để thay thể thẻ div bự nhất và trên html không thể hiện thẻ đó <Fragment></Fragment>
+ * hoặc dùng thẻ trống <></>
+ */
+// đối tượng jsx: <div></div>
 
 export default App;
