@@ -1,6 +1,66 @@
 import React, { Component } from "react";
 
 export default class GioHang extends Component {
+  renderContent = () => {
+    return this.props.cartList.map((element, index) => {
+      return (
+        <tr>
+          <td key={index}>{element.maSP}</td>
+          <td>
+            <img
+              width={50}
+              src={element.hinhAnh}
+              className="img-fluid"
+              alt="phone"
+            />
+          </td>
+          <td>{element.tenSP}</td>
+          <td>
+            <button
+              onClick={() => this.props.handleQuantity(element.maSP, false)}
+              className="btn btn-warning"
+            >
+              -
+            </button>
+            <span className="mx-1">{element.soLuong}</span>
+            <button
+              onClick={() => this.props.handleQuantity(element.maSP, true)}
+              className="btn btn-warning"
+            >
+              +
+            </button>
+          </td>
+          <td>{element.giaBan.toLocaleString()}</td>
+          <td>{(element.giaBan * element.soLuong).toLocaleString()}</td>
+          <td>
+            <button
+              onClick={() => this.props.handleRemove(element.maSP)}
+              className="btn btn-danger"
+            >
+              XÓA
+            </button>
+            {/* <button
+              onClick={() => this.props.handleRemoveByFilter(element.maSP)}
+              className="btn btn-danger"
+            >
+              XÓA THEO FILTER
+            </button> */}
+          </td>
+        </tr>
+      );
+    });
+  };
+
+  // delete = (id) => {
+  //   const index = this.props.cartList.findIndex((element) => {
+  //     return cartList.maSP === id;
+  //   });
+
+  //   if (index !== -1) {
+  //     cartList[index].splice(index, 1);
+  //   }
+  // };
+
   render() {
     return (
       <div>
@@ -48,30 +108,7 @@ export default class GioHang extends Component {
                       <th></th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>
-                        <img
-                          width={50}
-                          src={this.props.cartList.hinhAnh}
-                          className="img-fluid"
-                          alt="phone"
-                        />
-                      </td>
-                      <td>{this.props.cartList.tenSP}</td>
-                      <td>
-                        <button className="btn btn-warning">-</button>
-                        <span className="mx-1">1</span>
-                        <button className="btn btn-warning">+</button>
-                      </td>
-                      <td>3000</td>
-                      <td>3000</td>
-                      <td>
-                        <button className="btn btn-danger">XÓA</button>
-                      </td>
-                    </tr>
-                  </tbody>
+                  <tbody>{this.renderContent()}</tbody>
                 </table>
               </div>
               <div className="modal-footer">

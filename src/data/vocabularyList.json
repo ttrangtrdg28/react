@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "en": "Hat",
+    "vi": "Mũ",
+    "isFavorited": false
+  },
+  {
+    "id": 2,
+    "en": "Circle",
+    "vi": "Vòng tròn",
+    "isFavorited": true
+  },
+  {
+    "id": 3,
+    "en": "Heart",
+    "vi": "Trái tim",
+    "isFavorited": false
+  }
+]

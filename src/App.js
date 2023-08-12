@@ -18,6 +18,7 @@ import BaiTapPhim from "./components/BaiTapPhim/BaiTapPhim";
 import Parent from "./components/Props/Parent";
 import BaiTapGiay from "./components/BaiTapGiay/BaiTapGiay";
 import BaiTapDT from "./components/BaiTapDT/BaiTapDT";
+import BaiTapTuVung from "./components/BaiTapTuVung/BaiTapTuVung";
 
 function App() {
   return (
@@ -49,7 +50,8 @@ function App() {
       {/* <BaiTapPhim /> */}
       {/* <Parent /> */}
       {/* <BaiTapGiay /> */}
-      <BaiTapDT />
+      {/* <BaiTapDT /> */}
+      <BaiTapTuVung />
     </>
   );
 }
