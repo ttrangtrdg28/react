@@ -3,12 +3,23 @@ import VocabularyItem from "./VocabularyItem";
 
 export default class VocabularyList extends Component {
   renderContent = () => {
-    return this.props.vocabularyList.map((element) => {
+    const data = this.props.vocabularyList.filter((element) => {
+      if (this.props.isOnlyFavorited) {
+        //filter dòng có isOnlyFavorited = true
+        return element.isFavorited === true;
+      } else {
+        //hiển thị tất cả
+        return true;
+      }
+    });
+
+    return data.map((element) => {
       return (
         <VocabularyItem
           key={element.id}
           element={element}
           handleChangeFavorite={this.props.handleChangeFavorite}
+          handleRemove={this.props.handleRemove}
         />
       );
     });

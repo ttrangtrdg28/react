@@ -5,10 +5,14 @@ import Form from "./Form";
 import VocabularyList from "./VocabularyList";
 
 import data from "../../data/vocabularyList.json";
+import TabList from "./TabList";
+import HistoryList from "./HistoryList";
 
 export default class BaiTapTuVung extends Component {
   state = {
     vocabularyList: data,
+    isOnlyFavorited: false,
+    historyList: [],
   };
 
   handleSave = (vocabulary) => {
@@ -18,30 +22,82 @@ export default class BaiTapTuVung extends Component {
     //const data = [vocabulary, ...this.state.vocabularyList];
     data.unshift(vocabulary);
 
-    this.setState({
-      vocabularyList: data,
-    });
+    this.setState(
+      {
+        vocabularyList: data,
+      },
+      () => {
+        this.handleAddHistory("Add", vocabulary.en, vocabulary.vi);
+      }
+    );
   };
 
   handleChangeFavorite = (id, isFavorited) => {
-    // const data = [...this.state.vocabularyList];
-    // const index = data.findIndex((element) => element.id === id);
+    const data = [...this.state.vocabularyList];
+    const index = data.findIndex((element) => element.id === id);
 
-    // data[index].isFavorited = !isFavorited;
-    // // if (isFavorited) {
-    // //   data[index].isFavorited = false;
-    // // } else {
-    // //   data[index].isFavorited = true;
-    // // }
+    data[index].isFavorited = !isFavorited;
+    // if (isFavorited) {
+    //   data[index].isFavorited = false;
+    // } else {
+    //   data[index].isFavorited = true;
+    // }
+
+    this.setState(
+      {
+        vocabularyList: data,
+      },
+      () => {
+        this.handleAddHistory(
+          data[index].isFavorited ? "Like" : "Unlike",
+          data[index].en,
+          data[index].vi
+        );
+      }
+    );
 
     // this.setState({
-    //   vocabularyList: data,
+    //   vocabularyList: this.state.vocabularyList.map((element) =>
+    //     element.id === id ? { ...element, isFavorited: !isFavorited } : element
+    //   ),
     // });
+  };
+
+  handleChangeFilter = (isChecked) => {
+    this.setState({
+      isOnlyFavorited: isChecked,
+    });
+  };
+
+  handleRemove = (id) => {
+    const data = [...this.state.vocabularyList];
+    const index = data.findIndex((element) => element.id === id);
+    const vocabulary = data[index];
+
+    data.splice(index, 1);
+
+    this.setState(
+      {
+        vocabularyList: data,
+      },
+      () => {
+        this.handleAddHistory("Delete", vocabulary.en, vocabulary.vi);
+      }
+    );
+  };
+
+  handleAddHistory = (action, en, vi) => {
+    const history = {
+      action: action,
+      en: en,
+      vi: vi,
+      data: new Date().toLocaleString(),
+    };
+
+    const data = [history, ...this.state.historyList];
 
     this.setState({
-      vocabularyList: this.state.vocabularyList.map((element) =>
-        element.id === id ? { ...element, isFavorited: !isFavorited } : element
-      ),
+      historyList: data,
     });
   };
 
@@ -51,52 +107,7 @@ export default class BaiTapTuVung extends Component {
         <Form handleSave={this.handleSave} />
 
         <div className="mt-2">
-          <ul
-            className="nav nav-pills mb-3 d-flex justify-content-between"
-            id="pills-tab"
-            role="tablist"
-          >
-            <li className="nav-item w-50" role="presentation">
-              <button
-                className="nav-link border-0 w-100 active"
-                id="pills-vocabulary-tab"
-                data-toggle="pill"
-                data-target="#pills-vocabulary"
-                type="button"
-                role="tab"
-                aria-controls="pills-vocabulary"
-                aria-selected="true"
-              >
-                Vocabulary
-              </button>
-            </li>
-            <li className="nav-item w-50" role="presentation">
-              <button
-                className="nav-link border-0 w-100"
-                id="pills-history-tab"
-                data-toggle="pill"
-                data-target="#pills-history"
-                type="button"
-                role="tab"
-                aria-controls="pills-history"
-                aria-selected="false"
-              >
-                History
-              </button>
-            </li>
-            <div className="d-flex flex-column">
-              <small className="text-muted form-text text-nowrap">
-                Double click to remove vocabulary
-              </small>
-              <div className="d-flex align-items-center">
-                <label className="switch mb-0">
-                  <input type="checkbox" />
-                  <span className="slider round"></span>
-                </label>
-                <span className="ml-2">Only Favorited</span>
-              </div>
-            </div>
-          </ul>
+          <TabList handleChangeFilter={this.handleChangeFilter} />
 
           <div
             className="tab-content border-bottom border-top"
@@ -105,87 +116,12 @@ export default class BaiTapTuVung extends Component {
           >
             <VocabularyList
               vocabularyList={this.state.vocabularyList}
+              isOnlyFavorited={this.state.isOnlyFavorited}
               handleChangeFavorite={this.handleChangeFavorite}
+              handleRemove={this.handleRemove}
             />
 
-            <div
-              className="tab-pane fade"
-              id="pills-history"
-              role="tabpanel"
-              aria-labelledby="pills-history-tab"
-            >
-              <div className="border p-2 mb-2">
-                <div className="content">
-                  <div className="d-flex justify-content-between">
-                    <span
-                      style={{ lineHeight: "revert" }}
-                      className="badge badge-success"
-                    >
-                      Add
-                    </span>
-                    <span>{new Date().toLocaleString()}</span>
-                  </div>
-                  <div className="d-flex justify-content-between">
-                    <h5 className="font-weight-bold">News</h5>
-                    <p className="mb-0">Tin tức</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border p-2 mb-2">
-                <div className="content">
-                  <div className="d-flex justify-content-between">
-                    <span
-                      style={{ lineHeight: "revert" }}
-                      className="badge badge-danger"
-                    >
-                      Remove
-                    </span>
-                    <span>{new Date().toLocaleString()}</span>
-                  </div>
-                  <div className="d-flex justify-content-between">
-                    <h5 className="font-weight-bold">News</h5>
-                    <p className="mb-0">Tin tức</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border p-2 mb-2">
-                <div className="content">
-                  <div className="d-flex justify-content-between">
-                    <span
-                      style={{ lineHeight: "revert" }}
-                      className="badge badge-primary"
-                    >
-                      Like
-                    </span>
-                    <span>{new Date().toLocaleString()}</span>
-                  </div>
-                  <div className="d-flex justify-content-between">
-                    <h5 className="font-weight-bold">News</h5>
-                    <p className="mb-0">Tin tức</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border p-2 mb-2">
-                <div className="content">
-                  <div className="d-flex justify-content-between">
-                    <span
-                      style={{ lineHeight: "revert" }}
-                      className="badge badge-warning"
-                    >
-                      Unlike
-                    </span>
-                    <span>{new Date().toLocaleString()}</span>
-                  </div>
-                  <div className="d-flex justify-content-between">
-                    <h5 className="font-weight-bold">News</h5>
-                    <p className="mb-0">Tin tức</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <HistoryList historyList={this.state.historyList} />
           </div>
         </div>
       </div>
