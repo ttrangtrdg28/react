@@ -18,6 +18,12 @@ class Child extends Component {
         >
           DECREASE
         </button>
+        <button
+          onClick={() => this.props.random(Date.now())}
+          className="btn btn-warning"
+        >
+          RANDOM
+        </button>
       </div>
     );
   }
@@ -35,6 +41,15 @@ const mapDispatchToProps = (dispatch) => {
     decrease: () => {
       const action = {
         type: "DECREASE",
+      };
+
+      dispatch(action);
+    },
+    random: (value) => {
+      const action = {
+        type: "RANDOM",
+        // value, // value = value
+        payload: value,
       };
 
       dispatch(action);

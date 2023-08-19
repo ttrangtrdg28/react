@@ -7,7 +7,7 @@ class DemoRedux extends Component {
     console.log(this.props);
     return (
       <div>
-        <h3>Count= 0</h3>
+        <h3>Count = {this.props.countRedux}</h3>
         <Child />
       </div>
     );

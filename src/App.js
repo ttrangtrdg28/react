@@ -20,6 +20,8 @@ import BaiTapGiay from "./components/BaiTapGiay/BaiTapGiay";
 import BaiTapDT from "./components/BaiTapDT/BaiTapDT";
 import BaiTapTuVung from "./components/BaiTapTuVung/BaiTapTuVung";
 import DemoRedux from "./components/DemoRedux/DemoRedux";
+import BaiTapDTRedux from "./components/BaiTapDTRedux/BaiTapDT";
+import BaiTapDatGhe from "./components/BaiTapDatGhe/BaiTapDatGhe";
 
 function App() {
   return (
@@ -51,10 +53,14 @@ function App() {
       {/* <BaiTapPhim /> */}
       {/* <Parent /> */}
       {/* <BaiTapGiay /> */}
-      <BaiTapDT />
+      {/* <BaiTapDT /> */}
       {/* <BaiTapTuVung /> */}
 
       {/* <DemoRedux /> */}
+
+      {/* <BaiTapDTRedux /> */}
+
+      <BaiTapDatGhe />
     </>
   );
 }
@@ -66,4 +72,9 @@ function App() {
  */
 // đối tượng jsx: <div></div>
 
+/**
+ * remove node_modules
+ * npm install node-sass@8.0.0
+ * npm install
+ */
 export default App;

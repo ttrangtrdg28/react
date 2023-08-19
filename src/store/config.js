@@ -1,22 +1,12 @@
 import { combineReducers, createStore } from "redux";
-
-const DEFAULT_STATE = {
-  count: 0,
-};
+import { countReducer } from "./reducers/countReducer";
+import { phoneReducer } from "./reducers/phoneReducer";
+import { datGheReducer } from "./reducers/datGheReducer";
 
 const rootReducer = combineReducers({
-  countReducer: (state = DEFAULT_STATE, action) => {
-    switch (action.type) {
-      case "INCREASE":
-        state.count += 1;
-        break;
-      case "DECREASE":
-        state.count -= 1;
-        break;
-    }
-
-    return { ...state };
-  },
+  countReducer, // countReducer = countReducer
+  phoneReducer,
+  datGheReducer,
 });
 
 export const store = createStore(
