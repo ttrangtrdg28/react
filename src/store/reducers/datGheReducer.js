@@ -7,7 +7,9 @@ const DEFAULT_STATE = {
 export const datGheReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case "DAT_GHE":
-      const data = [...state.danhSachGhe];
+      // const data = [...state.danhSachGhe];
+      const data = JSON.parse(JSON.stringify(state.danhSachGhe));
+
       const index = data.findIndex(
         (element) => element.SoGhe === action.payload.SoGhe
       );

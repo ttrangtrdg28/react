@@ -21,7 +21,7 @@ class DanhSachGhe extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.datGheReducer.dangSachGhe,
+    data: state.datGheReducer.danhSachGhe,
   };
 };
 
