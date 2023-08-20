@@ -22,6 +22,7 @@ import BaiTapTuVung from "./components/BaiTapTuVung/BaiTapTuVung";
 import DemoRedux from "./components/DemoRedux/DemoRedux";
 import BaiTapDTRedux from "./components/BaiTapDTRedux/BaiTapDT";
 import BaiTapDatGhe from "./components/BaiTapDatGhe/BaiTapDatGhe";
+import BaiTapQuanLyNguoidung from "./components/BaiTapQLNguoiDung/BaiTapQLNguoiDung";
 
 function App() {
   return (
@@ -60,7 +61,9 @@ function App() {
 
       {/* <BaiTapDTRedux /> */}
 
-      <BaiTapDatGhe />
+      {/* <BaiTapDatGhe /> */}
+
+      <BaiTapQuanLyNguoidung />
     </>
   );
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "username": "man. nguyen",
+    "fullName": "Man Ng",
+    "password": "123",
+    "phoneNumber": "12345678",
+    "email": "man@gmail.com",
+    "type": "Client"
+  },
+  {
+    "id": 2,
+    "username": "khai.tran",
+    "fullName": "Khai Tr",
+    "password": "123",
+    "phoneNumber": "12345678",
+    "email": "khai@gmail.com",
+    "type": "Admin"
+  }
+]

@@ -1,4 +1,5 @@
 import data from "../../data/danhSachGhe.json";
+import { DAT_GHE } from "../types/datGheType";
 
 const DEFAULT_STATE = {
   danhSachGhe: data,
@@ -6,7 +7,7 @@ const DEFAULT_STATE = {
 
 export const datGheReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case "DAT_GHE":
+    case DAT_GHE:
       // const data = [...state.danhSachGhe];
       const data = JSON.parse(JSON.stringify(state.danhSachGhe));
 

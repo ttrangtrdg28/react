@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { datGheAction } from "../../store/actions/datGheAction";
 
 class Ghe extends Component {
   render() {
@@ -7,9 +8,7 @@ class Ghe extends Component {
 
     return (
       <button
-        onClick={() =>
-          this.props.dispatch({ type: "DAT_GHE", payload: this.props.element })
-        }
+        onClick={() => this.props.dispatch(datGheAction(this.props.element))}
         disabled={TrangThai}
         className={`chair ${DangChon && "btn-success"}`}
       >
