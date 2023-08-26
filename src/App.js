@@ -24,6 +24,10 @@ import BaiTapDTRedux from "./components/BaiTapDTRedux/BaiTapDT";
 import BaiTapDatGhe from "./components/BaiTapDatGhe/BaiTapDatGhe";
 import BaiTapQuanLyNguoidung from "./components/BaiTapQLNguoiDung/BaiTapQLNguoiDung";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+
 function App() {
   return (
     <>
@@ -63,7 +67,14 @@ function App() {
 
       {/* <BaiTapDatGhe /> */}
 
-      <BaiTapQuanLyNguoidung />
+      {/* <BaiTapQuanLyNguoidung /> */}
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

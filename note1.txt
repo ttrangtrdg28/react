@@ -1,0 +1,21 @@
+library: react-router-dom
+
+npm install react-router-dom
+App.js:
+- import { BrowserRouter, Routes } from "react-router-dom";
+thêm thẻ
+<BrowserRouter>
+    <Routes>
+        <Route path="/" element={<.../>}/>  
+    </Routes>
+</BrowserRouter>
+
+Cơ chế load trang:
+1. Single page application (1 file index.html duy nhất) -> React
+2. Multi page application (nhiều file html)
+
+PERFORMANCE: Single page (thay đổi nội dung) > Multi page (lên server nội dung mới)
+SEO (search engine optimization): Multi page > Single page (react helmet, nextjs => định nghĩa <meta>)
+
+react helmet: libraryy
+nextjs: react framework

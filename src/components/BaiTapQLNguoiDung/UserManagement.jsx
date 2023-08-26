@@ -1,9 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {
+  deleteUserAction,
+  setSelectedUserAction,
+} from "../../store/actions/userActions";
 
 class UserManagement extends Component {
+  state = {
+    keyword: "",
+    type: "",
+  };
+
   renderContent = () => {
-    return this.props.userList.map((element, index) => {
+    let data = this.props.userList.filter((element) => {
+      return (
+        element.fullName
+          .toLowerCase()
+          .indexOf(this.state.keyword.toLowerCase()) !== -1
+      );
+    });
+
+    data = data.filter((element) => element.type === this.state.type);
+
+    return data.map((element, index) => {
       const { id, username, fullName, phoneNumber, email, type } = element;
 
       const bg = index % 2 === 0 ? "bg-light" : "";
@@ -16,13 +35,32 @@ class UserManagement extends Component {
           <td>{phoneNumber}</td>
           <td>{type}</td>
           <td>
-            <button className="btn btn-info mr-2">EDIT</button>
-            <button className="btn btn-danger">DELETE</button>
+            <button
+              className="btn btn-info mr-2"
+              onClick={() =>
+                this.props.dispatch(setSelectedUserAction(element))
+              }
+            >
+              EDIT
+            </button>
+            <button
+              className="btn btn-danger"
+              onClick={() => this.props.dispatch(deleteUserAction(element))}
+            >
+              DELETE
+            </button>
           </td>
         </tr>
       );
     });
   };
+
+  handleChange = (event) => {
+    this.setState({
+      keyword: event.target.value,
+    });
+  };
+
   render() {
     return (
       <div className="card p-0 mt-3">
@@ -31,6 +69,7 @@ class UserManagement extends Component {
           <div className="col-4">
             <div className="form-group mb-0">
               <input
+                onChange={this.handleChange}
                 type="text"
                 placeholder="Search by full name..."
                 className="form-control"
