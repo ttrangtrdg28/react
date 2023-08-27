@@ -43,6 +43,13 @@ Tạo Router.jsx:
 </BrowserRouter>
 
 
+
+useEffect 
+- componentDidMount: chạy sau khi render
+- componentDidUpdate: chạy sau khi state hoặc props thay đổi
+- componentWillUnmount: chạy khi componnent bị hủy hoặc bị navigate sang trang khác
+
+
 useSearchParams: lấy dữ liệu người dùng search về
 
 Cơ chế load trang:
