@@ -10,6 +10,41 @@ thêm thẻ
     </Routes>
 </BrowserRouter>
 
+
+Tạo Router.jsx:
+- import { useRoutes } from "react-router-dom";
+- tạo rfc
+- const routing = useRoutes([
+    {
+      path: "/",
+      element: <Home />,
+    },
+
+    {
+      path: "/about",
+      element: <About />,
+    },
+
+    {
+      path: "/movie-detail",
+      element: <MovieDetail />,
+    },
+
+    {
+      path: "*",
+      element: <PageNotFound />,
+    },
+  ]);
+
+  return routing;
+- chỉnh App.js
+<BrowserRouter>
+    <Router />
+</BrowserRouter>
+
+
+useSearchParams: lấy dữ liệu người dùng search về
+
 Cơ chế load trang:
 1. Single page application (1 file index.html duy nhất) -> React
 2. Multi page application (nhiều file html)

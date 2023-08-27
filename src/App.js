@@ -27,6 +27,10 @@ import BaiTapQuanLyNguoidung from "./components/BaiTapQLNguoiDung/BaiTapQLNguoiD
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import MovieDetail from "./pages/MovieDetail";
+import PageNotFound from "./pages/PageNotFound";
+import HeaderRouter from "./components/HeaderRouter/HeaderRouter";
+import Router from "./Router";
 
 function App() {
   return (
@@ -70,10 +74,14 @@ function App() {
       {/* <BaiTapQuanLyNguoidung /> */}
 
       <BrowserRouter>
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-        </Routes>
+          <Route path="/movie-detail" element={<MovieDetail />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes> */}
+        {/* <HeaderRouter /> */}
+        <Router />
       </BrowserRouter>
     </>
   );
