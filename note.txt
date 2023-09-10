@@ -1,3 +1,40 @@
+máy mới cài thêm câu lệnh:
+- npm install npm -g
+lệnh tạo npx react 
+- npx create-react-app <projectName>
+khi nộp bài không commit node-modules, tạo lại folder
+- npm install 
+- npm start (chạy project)
+
+cài bootstrap
+- npm install bootstrap@4.3.1
+import vào index.js
+- import "bootstrap/dist/js/bootstrap.bundle.js"
+- import "bootstrap/dist/css/bootstrap.min.css";
+
+ctrl + C => tắt server đang chạy
+
+cài đặt redux
+- npm install redux
+- npm install react-redux
+hoặc
+- npm install react-redux redux
+import vào index.js
+- import {Provider} from "react-redux"
+- import { store } from "./store/config";
+chỉnh lại root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+cài đặt sass
+- npm install node-sass@8.0.0
+hoặc 
+1. remove node_modules
+2. npm install node-sass@8.0.0
+3. npm install 
+
 library: react-router-dom
 
 npm install react-router-dom
@@ -41,6 +78,16 @@ Tạo Router.jsx:
 <BrowserRouter>
     <Router />
 </BrowserRouter>
+
+
+cài đặt fontawesome
+- npm i --save @fortawesome/fontawesome-svg-core
+- npm i --save @fortawesome/free-solid-svg-icons
+- npm i --save @fortawesome/free-regular-svg-icons
+- npm i --save @fortawesome/react-fontawesome@latest
+<component>.jsx
+- import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+- import { faSquarePen, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 
 
 

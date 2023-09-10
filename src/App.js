@@ -72,7 +72,7 @@ function App() {
 
       {/* <BaiTapDatGhe /> */}
 
-      {/* <BaiTapQuanLyNguoidung /> */}
+      <BaiTapQuanLyNguoidung />
 
       <GlobalProvider>
         <BrowserRouter>

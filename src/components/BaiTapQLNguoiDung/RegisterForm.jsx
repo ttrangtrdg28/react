@@ -13,6 +13,7 @@ class RegisterForm extends Component {
   emailInputRef = createRef();
 
   state = {
+    id: "",
     username: "",
     fullName: "",
     password: "",
@@ -89,6 +90,7 @@ class RegisterForm extends Component {
       }
     }
     this.setState({
+      id: "",
       username: "",
       fullName: "",
       password: "",

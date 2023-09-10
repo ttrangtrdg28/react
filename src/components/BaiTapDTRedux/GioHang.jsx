@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { act } from "react-dom/test-utils";
 import { connect } from "react-redux";
 
 class GioHang extends Component {

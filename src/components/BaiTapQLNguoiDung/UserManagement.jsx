@@ -20,7 +20,7 @@ class UserManagement extends Component {
       );
     });
 
-    data = data.filter((element) => element.type === this.state.type);
+    // data = data.filter((element) => element.type === this.state.type);
 
     return data.map((element, index) => {
       const { id, username, fullName, phoneNumber, email, type } = element;
