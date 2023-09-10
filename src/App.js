@@ -31,6 +31,7 @@ import MovieDetail from "./pages/MovieDetail";
 import PageNotFound from "./pages/PageNotFound";
 import HeaderRouter from "./components/HeaderRouter/HeaderRouter";
 import Router from "./Router";
+import { GlobalProvider } from "./contexts/GlobalContext";
 
 function App() {
   return (
@@ -73,16 +74,22 @@ function App() {
 
       {/* <BaiTapQuanLyNguoidung /> */}
 
-      <BrowserRouter>
-        {/* <Routes>
+      <GlobalProvider>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </GlobalProvider>
+
+      {/* <BrowserRouter> */}
+      {/* <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/movie-detail" element={<MovieDetail />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes> */}
-        {/* <HeaderRouter /> */}
-        <Router />
-      </BrowserRouter>
+      {/* <HeaderRouter /> */}
+      {/* <Router /> */}
+      {/* </BrowserRouter> */}
     </>
   );
 }

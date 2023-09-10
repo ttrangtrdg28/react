@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Child from "./Child";
-import { wrapperBackground } from "../components/hoc/wrapperBackground";
+import { wrapperBackground } from "../hocs/wrapperBackground";
 import BaiTapChonXe from "../components/BaiTapChonXe/BaiTapChonXe";
+import BaiTapHook from "./BaiTapHook";
 
 const BaiTapChonXeBackground = wrapperBackground(BaiTapChonXe, "bg-light");
 export default function Hooks() {
@@ -12,6 +13,19 @@ export default function Hooks() {
     password: "",
   });
 
+  //cache lại dữ liệu và chỉ tính toán lại nếu trong [] thỏa điều kiện
+  const count = useMemo(() => {
+    let count = 0;
+
+    while (count < 100000000) {
+      count++;
+    }
+
+    return count;
+  }, [number]);
+
+  // console.log(count);
+
   //thay thế componentDidMount và componentDidUpdate
   useEffect(() => {
     // console.log("component");
@@ -20,19 +34,29 @@ export default function Hooks() {
   //thay thế componentDidMount
   //useEffect: tham số 1 là call back, tham số 2 là dependency list
   useEffect(() => {
-    console.log("componentDidMount");
+    // console.log("componentDidMount");
+
+    return () => {
+      // console.log("componentWillUnmount");
+    };
   }, []);
 
   //thay thế componentDidMount
   useEffect(() => {
     if (number !== 0 || form.username !== "") {
-      console.log("componentDidUpdate");
+      // console.log("componentDidUpdate");
     }
   }, [number, form.username]); //nếu number thay đổi thì callback trong useEffect sẽ chạy lại
 
-  const handleIncrease = () => {
+  // const handleIncrease = () => {
+  //   setNumber(number + 1);
+  // };
+
+  // giống useMemo nhưng cache function thay vì giá trị
+  const handleIncrease = useCallback(() => {
+    console.log("number", number);
     setNumber(number + 1);
-  };
+  }, [number]);
 
   const handleChange = (event) => {
     setForm({
@@ -76,6 +100,8 @@ export default function Hooks() {
       <hr />
 
       <Child name="HOOKS" />
+
+      <BaiTapHook />
 
       <BaiTapChonXeBackground />
     </div>
