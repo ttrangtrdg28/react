@@ -71,18 +71,18 @@ function App() {
 
       {/* <BaiTapDatGhe /> */}
 
-      {/* <BaiTapQuanLyNguoidung /> */}
+      <BaiTapQuanLyNguoidung /> 
 
-      <BrowserRouter>
-        {/* <Routes>
+      {/* <BrowserRouter>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/movie-detail" element={<MovieDetail />} />
           <Route path="*" element={<PageNotFound />} />
-        </Routes> */}
-        {/* <HeaderRouter /> */}
+        </Routes>
+        <HeaderRouter />
         <Router />
-      </BrowserRouter>
+      </BrowserRouter> */}
     </>
   );
 }
